@@ -6,25 +6,23 @@ import { toast } from "sonner";
 import api from "./api/api";
 
 const Navbar = () => {
-  const { user, setUser } = getData();
+  const { user, logout } = getData();
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-// Navbar.jsx mein
-// const { user, setUser, logout } = getData()
-
-const handleLogout = async () => {
+  const handleLogout = async () => {
     try {
-        const res = await api.post("/logout")
-        logout()  // setUser(null) ki jagah logout() use karo
-        navigate("/Login", { replace: true })
-        toast.success(res.data.message || "Logout successfully", {
-            className: "bg-green-500 text-white font-medium px-4 py-2 rounded-lg shadow-lg",
-        })
+      const res = await api.post("/logout");
+      logout();
+      navigate("/Login", { replace: true });
+      toast.success(res.data.message || "Logout successfully", {
+        className:
+          "bg-green-500 text-white font-medium px-4 py-2 rounded-lg shadow-lg",
+      });
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-}
+  };
 
   return (
     <nav className="bg-white shadow-md">

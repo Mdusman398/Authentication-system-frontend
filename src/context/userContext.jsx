@@ -26,8 +26,13 @@ export const UserProvider = ({ children }) => {
         fetchUser()
     }, [])
 
+    const logout = () => {
+        setUser(null)
+        hasFetched.current = false
+    }
+
     return (
-        <UserContext.Provider value={{ user, setUser, loading }}>
+        <UserContext.Provider value={{ user, setUser, loading, logout }}>
             {children}
         </UserContext.Provider>
     )

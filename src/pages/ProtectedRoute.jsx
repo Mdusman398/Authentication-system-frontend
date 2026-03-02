@@ -3,17 +3,17 @@ import { Navigate } from "react-router-dom"
 
 const ProtectedRoute = ({ children }) => {
     const { user, loading } = getData()
-    
-    if (loading) return null  // loading mein kuch mat karo
-    
+
+    if (loading) return null
+
     return user ? children : <Navigate to="/Login" replace />
 }
 
 export const GuestRoute = ({ children }) => {
     const { user, loading } = getData()
-    
-    if (loading) return null  // loading mein kuch mat karo
-    
+
+    if (loading) return null
+
     return user ? <Navigate to="/" replace /> : children
 }
 
