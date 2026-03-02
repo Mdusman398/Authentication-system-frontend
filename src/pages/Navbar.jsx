@@ -16,12 +16,13 @@ const Navbar = () => {
       await api.post(
         "/logout" );
       setUser(null);
+
+      navigate("/Login", { replace: true })
       toast.success(res.data.message, {
           className:
           "bg-green-500 text-white font-medium px-4 py-2 rounded-lg shadow-lg",
         });
       
-      navigate("/Login");
     } catch (error) {
       console.log(error);
     }
