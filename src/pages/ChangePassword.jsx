@@ -31,7 +31,7 @@ const ChangePassword = () => {
     try {
       setIsLoading(true);
       const res = await api.post(
-        `/change-password/${email}`,
+        `/api/change-password/${email}`,
         {
           newPassword,
           confirmPassword,

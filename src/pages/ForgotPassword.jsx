@@ -27,7 +27,7 @@ const ForgotPassword = () => {
       e.preventDefault()
       try {
         setIsLoading(true)
-        const res = await api.post("/forgot-password", {email})
+        const res = await api.post("/api/forgot-password", {email})
          if (res.data.success) {
              setTimeout(() => navigate(`/verify-otp/${email}`), 1000);
         toast.success(res.data.message, {

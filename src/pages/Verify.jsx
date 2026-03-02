@@ -17,7 +17,7 @@ const Verify = () => {
       try {
   
         const res = await api.get(
-          `/verify/${token}`
+          `/api/verify/${token}`
         );
           
 
