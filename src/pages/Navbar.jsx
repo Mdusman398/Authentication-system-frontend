@@ -15,7 +15,7 @@ const Navbar = () => {
     try {
       await api.post(
         "/logout" );
-      setUser({});
+      setUser(null);
       toast.success(res.data.message, {
           className:
           "bg-green-500 text-white font-medium px-4 py-2 rounded-lg shadow-lg",

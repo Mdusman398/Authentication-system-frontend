@@ -1,17 +1,18 @@
 import { createContext, useContext, useState, useEffect } from "react"
-import api from "@/pages/api/api"
+import api from "./api/api"
 
 export const UserContext = createContext(null)
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)  
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await api.get("/me");
+                const res = await api.get("/me")
                 if (res.data.success) setUser(res.data.user)
+                else setUser(null)
             } catch (error) {
                 setUser(null)
             } finally {

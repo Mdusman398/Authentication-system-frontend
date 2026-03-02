@@ -12,7 +12,7 @@ const VerifyEmail = () => {
         const res = await api.get("/me");
         if (res.data.user?.isVerified) {
           clearInterval(interval);
-          navigate("/login");
+          navigate("/Login");
         }
       } catch (error) {}
     }, 3000);
