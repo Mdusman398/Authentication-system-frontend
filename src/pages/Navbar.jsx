@@ -13,8 +13,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await api.post(
-        "/logout" );
+      const res = await api.post("/logout" );
       setUser(null);
 
       navigate("/Login", { replace: true })

@@ -43,20 +43,17 @@ const VerifyOTP = () => {
       inputRefs.current[index + 1]?.focus();
     }
   };
+
   const handleVerify = async () => {
     const finalOtp = otp.join("");
     if (finalOtp.length !== 6) {
       setError("please enter all digits");
+      return;
     }
 
     try {
       setIsLoading(true);
-      const res = await api.post(
-        `/verify-otp/${email}`,
-        {
-          otp: finalOtp,
-        },
-      );
+      const res = await api.post(`/verify-otp/${email}`, { otp: finalOtp });
       setSuccessMessage(res.data.message);
       setTimeout(() => {
         navigate(`/change-password/${email}`);
@@ -143,11 +140,13 @@ const VerifyOTP = () => {
             ) : (
               <>
                 {/* OTP Inputs */}
-                <div className="flex justify-center gap-3">
+                <div className="flex justify-center gap-1.5 sm:gap-3">
                   {otp.map((digit, index) => (
                     <Input
                       key={index}
                       type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       value={digit}
                       onChange={(e) => handleChange(index, e.target.value)}
                       ref={(el) => (inputRefs.current[index] = el)}
@@ -167,7 +166,7 @@ const VerifyOTP = () => {
                       }}
                       onKeyDown={(e) => handleKeyDown(index, e)}
                       maxLength={1}
-                      className="w-12 h-12 text-center text-lg font-semibold rounded-xl border border-gray-300 focus:border-blue-900 focus:ring focus:ring-blue-200 transition-all duration-200"
+                      className="w-9 h-11 sm:w-12 sm:h-12 text-center text-base sm:text-lg font-semibold rounded-xl border border-gray-300 focus:border-blue-900 focus:ring focus:ring-blue-200 transition-all duration-200 p-0"
                     />
                   ))}
                 </div>
