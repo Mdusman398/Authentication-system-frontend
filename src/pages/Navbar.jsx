@@ -10,18 +10,15 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-
   const handleLogout = async () => {
     try {
-      const res = await api.post("/logout" );
+      const res = await api.post("/logout");
       setUser(null);
-
-      navigate("/Login", { replace: true })
-      toast.success(res.data.message, {
-          className:
+      navigate("/Login", { replace: true });
+      toast.success(res.data.message || "Logout successfully", {
+        className:
           "bg-green-500 text-white font-medium px-4 py-2 rounded-lg shadow-lg",
-        });
-      
+      });
     } catch (error) {
       console.log(error);
     }
