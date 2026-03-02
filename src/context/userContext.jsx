@@ -1,5 +1,6 @@
+import api from "@/pages/api/api"
 import { createContext, useContext, useState, useEffect } from "react"
-import api from "./api/api"
+
 
 export const UserContext = createContext(null)
 
