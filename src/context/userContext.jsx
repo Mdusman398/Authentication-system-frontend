@@ -1,14 +1,17 @@
 import api from "@/pages/api/api"
-import { createContext, useContext, useState, useEffect } from "react"
-
+import { createContext, useContext, useState, useEffect, useRef } from "react"
 
 export const UserContext = createContext(null)
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const hasFetched = useRef(false)
 
     useEffect(() => {
+        if (hasFetched.current) return
+        hasFetched.current = true
+
         const fetchUser = async () => {
             try {
                 const res = await api.get("/me")
@@ -23,10 +26,8 @@ export const UserProvider = ({ children }) => {
         fetchUser()
     }, [])
 
-    if (loading) return null
-
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, loading }}>
             {children}
         </UserContext.Provider>
     )
