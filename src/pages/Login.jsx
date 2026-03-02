@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const res = await api.post("/api/login", formData);
+      const res = await api.post("/login", formData);
       if (res.data.success) {
         setUser(res.data.user)
         toast.success(res.data.message, {

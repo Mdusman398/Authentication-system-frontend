@@ -35,7 +35,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const res = await api.post("/api/signup", formData);
+      const res = await api.post("/signup", formData);
       if (res.data.success) {
         toast.success(res.data.message, {
       className: "bg-green-500 text-white font-medium px-4 py-2 rounded-lg shadow-lg",

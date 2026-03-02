@@ -14,7 +14,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await api.post(
-        "/api/logout" );
+        "/logout" );
       setUser({});
       toast.success(res.data.message, {
           className:

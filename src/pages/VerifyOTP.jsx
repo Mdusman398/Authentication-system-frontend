@@ -59,7 +59,7 @@ const VerifyOTP = () => {
       );
       setSuccessMessage(res.data.message);
       setTimeout(() => {
-        navigate(`/api/change-password/${email}`);
+        navigate(`/change-password/${email}`);
       }, 1000);
     } catch (error) {
       setError(error.response?.data?.message || "Something went wrong");
