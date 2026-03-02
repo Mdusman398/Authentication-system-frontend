@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { MailCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import api from "@/api/api";
+import api from "./api/api";
+
 
 const VerifyEmail = () => {
   const navigate = useNavigate();

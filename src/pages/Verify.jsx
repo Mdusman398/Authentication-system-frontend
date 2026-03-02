@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Loader2, CheckCircle2, XCircle } from "lucide-react";
 import api from "./api/api";
 
+
 const Verify = () => {
   const navigate = useNavigate();
   const { token } = useParams();
