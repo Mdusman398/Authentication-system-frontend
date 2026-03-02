@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
-import axios from "axios"
+import api from "@/pages/api/api"
 
 export const UserContext = createContext(null)
 
@@ -10,9 +10,7 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/api/me", {
-                    withCredentials: true  
-                });
+                const res = await api.get("/me");
                 if (res.data.success) setUser(res.data.user)
             } catch (error) {
                 setUser(null)
